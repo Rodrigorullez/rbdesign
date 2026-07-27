@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apareça no Google — Sites, Logos e Presença Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151C;
+    --ink-soft:#4A5063;
+    --paper:#F6F6F4;
+    --paper-dim:#ECECE8;
+    --navy:#1B2A4A;
+    --navy-deep:#101A30;
+    --teal:#00B39A;
+    --teal-soft:#D9F3EE;
+    --line:#DCDCD6;
+    --g-blue:#4285F4;
+    --g-red:#EA4335;
+    --g-yellow:#FBBC05;
+    --g-green:#34A853;
+    --radius:14px;
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--navy-deep);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:500;
+  }
+  section{padding:88px 0;}
+  @media(max-width:720px){ section{padding:56px 0;} }
+
+  button, .btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+    border-radius:999px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:focus-visible, a:focus-visible, button:focus-visible{
+    outline:3px solid var(--teal);
+    outline-offset:2px;
+  }
+  .btn-primary{
+    background:var(--teal);
+    color:#04231D;
+    padding:14px 26px;
+    font-size:0.98rem;
+    box-shadow:0 6px 20px rgba(0,179,154,0.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,179,154,0.36);}
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+    padding:12px 24px;
+    font-size:0.95rem;
+  }
+  .btn-ghost:hover{background:var(--navy); color:#fff;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,246,244,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex; align-items:center; gap:9px;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700; font-size:1.15rem;
+    color:var(--navy-deep);
+  }
+  .logo-dot{width:11px;height:11px;border-radius:50%;background:var(--teal);}
+  .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0; font-size:0.94rem; font-weight:500;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--navy-deep);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .menu-toggle{display:none; background:none; border:none; font-size:1.5rem; color:var(--navy-deep);}
+  @media(max-width:860px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 72px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media(max-width:940px){ .hero{grid-template-columns:1fr; padding-top:56px;} }
+
+  .hero h1{
+    font-size:clamp(2.1rem, 4.4vw, 3.35rem);
+    line-height:1.08;
+    margin-top:14px;
+  }
+  .hero h1 span{color:var(--teal);}
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:52ch;
+  }
+  .hero-actions{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .hero-note{margin-top:18px; font-size:0.85rem; color:var(--ink-soft);}
+
+  /* Signature element: search comparison */
+  .search-mock{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 24px 60px -20px rgba(16,26,48,0.18);
+  }
+  .search-bar{
+    display:flex; align-items:center; gap:10px;
+    background:var(--paper-dim);
+    border-radius:999px;
+    padding:12px 18px;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+  }
+  .search-bar .g-icon{display:flex; gap:3px;}
+  .g-icon span{width:6px;height:6px;border-radius:50%;}
+  .g-icon span:nth-child(1){background:var(--g-blue);}
+  .g-icon span:nth-child(2){background:var(--g-red);}
+  .g-icon span:nth-child(3){background:var(--g-yellow);}
+  .g-icon span:nth-child(4){background:var(--g-green);}
+  .type-cursor{border-right:2px solid var(--ink-soft); animation:blink 1s step-end infinite; padding-right:2px;}
+  @keyframes blink{50%{border-color:transparent;}}
+
+  .results{margin-top:18px; display:flex; flex-direction:column; gap:12px;}
+  .result-card{
+    border-radius:12px;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    gap:12px;
+  }
+  .result-card.faded{opacity:0.45;}
+  .result-card.win{
+    background:var(--teal-soft);
+    border-color:var(--teal);
+  }
+  .result-name{font-weight:600; font-size:0.95rem; color:var(--navy-deep);}
+  .result-sub{font-size:0.78rem; color:var(--ink-soft); margin-top:2px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.66rem;
+    padding:4px 9px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .tag.before{background:#E9E9E4; color:var(--ink-soft);}
+  .tag.after{background:var(--teal); color:#04231D;}
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;
+  }
+  @media(max-width:860px){ .about{grid-template-columns:1fr;} }
+  .about h2{font-size:clamp(1.6rem,3vw,2.15rem); margin-top:10px;}
+  .about-lead{font-size:1.05rem; color:var(--ink-soft); margin-top:18px;}
+  .credibility{
+    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+    font-size:0.95rem; color:var(--navy-deep); font-weight:500;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    margin-top:36px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media(max-width:860px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 24px;
+  }
+  .service-icon{
+    width:42px; height:42px; border-radius:11px;
+    background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.05rem;
+  }
+  .service-card h3{font-size:1.15rem; margin-top:18px;}
+  .service-card p{margin-top:10px; font-size:0.94rem; color:var(--ink-soft);}
+  .service-card ul{margin:14px 0 0; padding-left:18px; font-size:0.9rem; color:var(--ink-soft);}
+  .service-card li{margin-bottom:6px;}
+
+  /* ---------- BENEFITS ---------- */
+  .benefits-wrap{
+    background:var(--navy-deep);
+    border-radius:24px;
+    padding:56px 44px;
+    color:#EFF1F6;
+  }
+  @media(max-width:640px){ .benefits-wrap{padding:40px 24px;} }
+  .benefits-wrap h2{color:#fff;}
+  .benefits-grid{
+    margin-top:32px;
+    display:grid; grid-template-columns:1fr 1fr; gap:36px;
+  }
+  @media(max-width:720px){ .benefits-grid{grid-template-columns:1fr;} }
+  .benefits-col .eyebrow{color:var(--teal);}
+  .benefits-col h4{font-family:'Space Grotesk',sans-serif; font-size:1.02rem; color:#fff; margin-top:10px;}
+  .benefits-col ul{margin:16px 0 0; padding:0; list-style:none;}
+  .benefits-col li{
+    padding:12px 0; border-top:1px solid rgba(255,255,255,0.12);
+    font-size:0.95rem; color:#C7CCDA;
+  }
+
+  /* ---------- PROOF ---------- */
+  .proof-grid{
+    margin-top:36px;
+    display:grid; grid-template-columns:1.3fr 1fr; gap:22px;
+  }
+  @media(max-width:860px){ .proof-grid{grid-template-columns:1fr;} }
+  .testimonials{display:flex; flex-direction:column; gap:18px;}
+  .testimonial{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .testimonial p{font-size:0.98rem; color:var(--navy-deep);}
+  .testimonial cite{display:block; margin-top:12px; font-size:0.82rem; color:var(--ink-soft); font-style:normal;}
+  .stats{
+    background:var(--teal); border-radius:var(--radius);
+    padding:26px; display:flex; flex-direction:column; gap:20px;
+    color:#04231D; justify-content:center;
+  }
+  .stat b{display:block; font-family:'Space Grotesk',sans-serif; font-size:2rem;}
+  .stat span{font-size:0.82rem; opacity:0.85;}
+
+  /* ---------- OBJECTIONS ---------- */
+  .objections-grid{
+    margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  @media(max-width:860px){ .objections-grid{grid-template-columns:1fr;} }
+  .objection{
+    border-left:3px solid var(--teal);
+    padding:4px 0 4px 18px;
+  }
+  .objection .q{font-weight:600; color:var(--navy-deep); font-size:0.98rem;}
+  .objection .a{margin-top:8px; font-size:0.92rem; color:var(--ink-soft);}
+
+  /* ---------- CONVERSION BANNER ---------- */
+  .cta-banner{
+    background:var(--navy); border-radius:24px;
+    padding:56px 44px; text-align:center; color:#fff;
+  }
+  @media(max-width:640px){ .cta-banner{padding:40px 22px;} }
+  .cta-banner h2{color:#fff; font-size:clamp(1.5rem,3.4vw,2.1rem); max-width:24ch; margin:14px auto 0;}
+  .cta-banner p{margin-top:14px; color:#C7CCDA; font-size:1rem;}
+  .cta-banner .hero-actions{justify-content:center; margin-top:28px;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{margin-top:32px; display:flex; flex-direction:column; gap:0;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none;
+    padding:20px 0; display:flex; justify-content:space-between; align-items:center;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:1rem; color:var(--navy-deep);
+  }
+  .faq-q .plus{font-family:'Space Grotesk',sans-serif; font-size:1.2rem; color:var(--teal); transition:transform .2s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .25s ease;
+    font-size:0.94rem; color:var(--ink-soft);
+  }
+  .faq-a-inner{padding-bottom:20px; max-width:65ch;}
+  .faq-item.open .faq-a{max-height:220px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep); color:#B6BBCB; padding:52px 0 28px;}
+  .footer-top{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px;
+    padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-logo{font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff; font-size:1.1rem; display:flex; align-items:center; gap:9px;}
+  .footer-links{display:flex; gap:44px; flex-wrap:wrap;}
+  .footer-col h5{font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:#7B8195; margin-bottom:12px; font-family:'IBM Plex Mono',monospace; font-weight:500;}
+  .footer-col a{display:block; font-size:0.9rem; color:#B6BBCB; text-decoration:none; margin-bottom:8px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{padding-top:22px; font-size:0.8rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-dot"></span>RB.Digital</div>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#portfolio">Depoimentos</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn btn-primary" onclick="document.getElementById('contato').scrollIntoView()">Quero meu site agora</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero wrap">
+  <div>
+    <span class="eyebrow">Sites · Logos · Google</span>
+    <h1>Sua empresa ainda não existe no <span>Google</span>. Seu concorrente já está lá.</h1>
+    <p class="lede">Criamos sites profissionais, identidade visual e presença completa no Google para empresas que querem parar de perder clientes por não serem encontradas online.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="document.getElementById('contato').scrollIntoView()">Solicitar orçamento gratuito</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('servicos').scrollIntoView()">Ver o que está incluso</button>
+    </div>
+    <p class="hero-note">Site + logotipo + perfil no Google, em um pacote só — sem termos técnicos, sem enrolação.</p>
+  </div>
+
+  <div class="search-mock" aria-hidden="true">
+    <div class="search-bar">
+      <div class="g-icon"><span></span><span></span><span></span><span></span></div>
+      <span>encanador em Belo Horizonte<span class="type-cursor"></span></span>
+    </div>
+    <div class="results">
+      <div class="result-card faded">
+        <div>
+          <div class="result-name">Sua empresa</div>
+          <div class="result-sub">Não encontrada nesta busca</div>
+        </div>
+        <span class="tag before">antes</span>
+      </div>
+      <div class="result-card win">
+        <div>
+          <div class="result-name">Sua empresa</div>
+          <div class="result-sub">★★★★★ · a 1,2 km · aberto agora</div>
+        </div>
+        <span class="tag after">depois</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="wrap about">
+  <div>
+    <span class="eyebrow">Quem cuida disso</span>
+    <h2>Tiramos empresas da invisibilidade digital.</h2>
+  </div>
+  <div>
+    <p class="about-lead">Somos uma agência especializada em presença digital para pequenas e médias empresas. Cuidamos de tudo: do site à sua marca, da estrutura visual à sua ficha no Google — para que você foque no que faz de melhor, vender.</p>
+    <p class="credibility">Já ajudamos dezenas de negócios locais a saírem do "não tenho site" para "meus clientes me acham no Google todos os dias".</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="wrap" id="servicos">
+  <span class="eyebrow">O pacote</span>
+  <h2 style="margin-top:10px; font-size:clamp(1.6rem,3vw,2.15rem);">Tudo que sua empresa precisa para ser encontrada.</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">01</div>
+      <h3>Site profissional</h3>
+      <p>Responsivo, rápido e pensado para converter visitante em cliente.</p>
+      <ul>
+        <li>Design moderno e exclusivo</li>
+        <li>Adaptado para celular</li>
+        <li>Formulário de contato integrado</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">02</div>
+      <h3>Identidade visual</h3>
+      <p>Um logotipo que transmite profissionalismo e confiança à primeira vista.</p>
+      <ul>
+        <li>Logotipo original</li>
+        <li>Paleta de cores e fontes</li>
+        <li>Arquivos prontos para uso</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">03</div>
+      <h3>Presença no Google</h3>
+      <p>Configuração completa do seu perfil para aparecer em buscas locais.</p>
+      <ul>
+        <li>Ficha do Google configurada</li>
+        <li>Otimização para busca local</li>
+        <li>Localização e horários corretos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="wrap">
+  <div class="benefits-wrap">
+    <span class="eyebrow">Por que isso importa</span>
+    <h2>Mais do que um site — uma porta de entrada de clientes.</h2>
+    <div class="benefits-grid">
+      <div class="benefits-col">
+        <span class="eyebrow">Na prática</span>
+        <h4>O que muda no dia a dia</h4>
+        <ul>
+          <li>Ser encontrado no Google quando alguém busca o que você vende</li>
+          <li>Ter um site que passa credibilidade antes do primeiro contato</li>
+          <li>Parar de perder clientes para concorrentes só porque eles têm uma página</li>
+        </ul>
+      </div>
+      <div class="benefits-col">
+        <span class="eyebrow">No dia a dia</span>
+        <h4>O que muda por dentro</h4>
+        <ul>
+          <li>Tranquilidade de saber que sua empresa existe oficialmente online</li>
+          <li>Orgulho de mostrar seu site e sua marca para clientes e parceiros</li>
+          <li>Sensação de competir de igual para igual com empresas maiores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="wrap" id="portfolio">
+  <span class="eyebrow">Quem já usa</span>
+  <h2 style="margin-top:10px; font-size:clamp(1.6rem,3vw,2.15rem);">Resultado de quem saiu do zero.</h2>
+  <div class="proof-grid">
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Antes ninguém me achava no Google. Hoje é a primeira coisa que aparece quando buscam meu serviço na região."</p>
+        <cite>— Cliente, serviços residenciais</cite>
+      </div>
+      <div class="testimonial">
+        <p>"O site ficou muito mais profissional do que eu esperava, e o atendimento foi rápido do início ao fim."</p>
+        <cite>— Cliente, comércio local</cite>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>+40</b><span>empresas atendidas</span></div>
+      <div class="stat"><b>+50</b><span>sites entregues</span></div>
+      <div class="stat"><b>7 dias</b><span>prazo médio de entrega</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="wrap">
+  <span class="eyebrow">Antes de decidir</span>
+  <h2 style="margin-top:10px; font-size:clamp(1.6rem,3vw,2.15rem);">O que normalmente trava a decisão.</h2>
+  <div class="objections-grid">
+    <div class="objection">
+      <p class="q">"Não tenho tempo para cuidar disso"</p>
+      <p class="a">Nós cuidamos de tudo — você só aprova cada etapa.</p>
+    </div>
+    <div class="objection">
+      <p class="q">"Já tentei e não deu certo"</p>
+      <p class="a">Normalmente falta estrutura completa: site, Google e identidade visual juntos, não isolados.</p>
+    </div>
+    <div class="objection">
+      <p class="q">"Acho que vai ser caro"</p>
+      <p class="a">O pacote foi pensado para caber no orçamento de quem está começando ou crescendo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSION BANNER -->
+<section class="wrap" id="contato">
+  <div class="cta-banner">
+    <span class="eyebrow">Pacote completo</span>
+    <h2>Site + Logo + Google, por um investimento único.</h2>
+    <p>Isso não é "só um site" — é a base da sua presença digital: o que faz sua empresa ser encontrada, reconhecida e escolhida.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="window.location.href='mailto:contato@rb.digital'">Quero minha empresa no Google agora</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="wrap" id="faq">
+  <span class="eyebrow">Dúvidas comuns</span>
+  <h2 style="margin-top:10px; font-size:clamp(1.6rem,3vw,2.15rem);">Perguntas frequentes</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">Quanto tempo leva para o site ficar pronto?<span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">O prazo varia conforme a complexidade, mas o processo é ágil e você acompanha cada etapa.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Preciso entender de tecnologia?<span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Não. Cuidamos de toda a parte técnica — você só participa das decisões de conteúdo e visual.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">O site já vem otimizado para aparecer no Google?<span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Sim, entregamos com otimização básica de SEO local e configuração completa do perfil no Google.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Posso pedir alterações depois de pronto?<span class="plus">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Sim, ajustes fazem parte do processo antes da entrega final.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-logo"><span class="logo-dot"></span>RB.Digital</div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <a href="#servicos">Serviços</a>
+          <a href="#portfolio">Depoimentos</a>
+          <a href="#faq">Dúvidas</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <a href="mailto:contato@rb.digital">contato@rb.digital</a>
+          <a href="#">WhatsApp</a>
+        </div>
+        <div class="footer-col">
+          <h5>Redes</h5>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 RB.Digital — todos os direitos reservados.</span>
+      <span>Feito para empresas que querem ser encontradas.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
